@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .App {
   text-align: center;
+  background-color: #121212;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px; /* 增加基础字体大小 */
 }
 
 .App-logo {
@@ -14,14 +28,9 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
 }
 
 .App-link {
@@ -38,7 +47,13 @@
 }
 
 .container {
-  padding: 20px;
+  background-color: #181818;
+  border-radius: 12px;
+  padding: 5vw; /* 增加内边距 */
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  max-width: 1400px; /* 增加最大宽度 */
+  width: 90%; /* 占据90%的视窗宽度 */
+  margin: 0 auto; /* 居中容器 */
 }
 
 .main-wrapper {
@@ -48,12 +63,18 @@
 }
 
 .now-playing__cover {
-  max-width: 300px;
-  width: 100%;
+  width: 40vw; /* 增加封面尺寸 */
+  height: 40vw; /* 使用视窗宽度的百分比 */
+  max-width: 500px; /* 增加最大尺寸 */
+  max-height: 500px; /* 增加最大尺寸 */
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
 }
 
 .now-playing__side {
-  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .btn-spotify {
@@ -64,4 +85,265 @@
   margin: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.progress-bar {
+  width: 100%;
+  margin-bottom: 40px; /* 增加进度条下边距 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-time {
+  font-size: 16px; /* 增加时间字体大小 */
+  width: 50px; /* 增加时间显示宽度 */
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.progress-bar input[type="range"] {
+  flex-grow: 1;
+  margin: 0 10px;
+  -webkit-appearance: none;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.progress-bar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px; /* 增加滑块大小 */
+  width: 20px;
+  border-radius: 50%;
+  background: #1DB954;
+  cursor: pointer;
+  margin-top: -6px;
+  box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.1);
+  transition: all 0.2s ease;
+}
+
+.progress-bar input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: #535353;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.progress-bar input[type="range"]:hover::-webkit-slider-thumb {
+  box-shadow: 0 0 0 8px rgba(29, 185, 84, 0.1);
+}
+
+.progress-bar input[type="range"].dragging::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  box-shadow: 0 0 0 10px rgba(29, 185, 84, 0.2);
+}
+
+.progress-bar input[type="range"]:hover::-webkit-slider-runnable-track,
+.progress-bar input[type="range"].dragging::-webkit-slider-runnable-track {
+  height: 6px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* 稍微减小控制按钮之间的间距 */
+}
+
+.controls button {
+  background-color: transparent;
+  color: #b3b3b3;
+  border: none;
+  border-radius: 50%;
+  width: 60px; /* 使用固定宽度 */
+  height: 60px; /* 使用固定高度 */
+  font-size: 24px; /* 调整字体大小以匹配其他元素 */
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls button:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.controls button:nth-child(2) {
+  background-color: #ffffff;
+  color: #121212;
+}
+
+.controls button:nth-child(2):hover {
+  background-color: #1DB954;
+  color: #ffffff;
+}
+
+/* 添加新的动画样式 */
+@keyframes playButtonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.controls button:nth-child(2):active {
+  animation: playButtonClick 0.3s ease;
+  background-color: #1ED760;
+}
+
+h1 {
+  margin-bottom: 40px;
+  font-size: 5vw; /* 增加标题字体大小 */
+  color: #1DB954;
+  font-weight: 700;
+}
+
+.now-playing__name {
+  font-size: 5vw; /* 增加歌曲名字体大小 */
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.now-playing__artist {
+  font-size: 3vw; /* 增加艺术家名字体大小 */
+  color: #b3b3b3;
+  margin-bottom: 30px;
+}
+
+/* Add these styles to your existing App.css file */
+
+.spotify-button {
+  background-color: #1DB954;
+  color: white;
+  border: none;
+  border-radius: 25px; /* 减小圆角 */
+  padding: 10px 20px; /* 减小内边距 */
+  font-size: 14px; /* 减小字体大小 */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+}
+
+.spotify-button:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
+
+.spotify-button.logout {
+  background-color: #191414;
+  border: 2px solid #1DB954;
+  color: #1DB954;
+  padding: 8px 18px; /* 进一步减小登出按钮的内边距 */
+  font-size: 12px; /* 进一步减小登出按钮的字体大小 */
+}
+
+.spotify-button.logout:hover {
+  background-color: #1DB954;
+  color: white;
+}
+
+.audio-quality-subtle {
+  font-size: 0.7em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 4px;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 添加媒体查询以适应大屏幕 */
+@media (min-width: 1200px) {
+  .App {
+    font-size: 18px; /* 在大屏幕上增加基础字体大小 */
+  }
+
+  h1 {
+    font-size: 36px; /* 固定大屏幕上的字体大小 */
+  }
+
+  .now-playing__name {
+    font-size: 30px; /* 固定大屏幕上的字体大小 */
+  }
+
+  .now-playing__artist {
+    font-size: 22px; /* 固定大屏幕上的字体大小 */
+  }
+
+  .controls button {
+    font-size: 24px; /* 固定大屏幕上的字体大小 */
+  }
+}
+
+/* 修改大屏幕媒体查询 */
+@media (min-width: 1400px) {
+  .App {
+    font-size: 20px; /* 在大屏幕上进一步增加基础字体大小 */
+  }
+
+  h1 {
+    font-size: 60px; /* 增加大屏幕上的标题字体大小 */
+  }
+
+  .now-playing__name {
+    font-size: 48px; /* 增加大屏幕上的歌曲名字体大小 */
+  }
+
+  .now-playing__artist {
+    font-size: 36px; /* 增加大屏幕上的艺术家名字体大小 */
+  }
+
+  .progress-time {
+    font-size: 18px; /* 增加大屏幕上的时间字体大小 */
+  }
+
+  .controls button {
+    font-size: 36px; /* 增加大屏幕上的按钮图标大小 */
+  }
+
+  .spotify-button {
+    font-size: 16px; /* 调整大屏幕上的按钮字体大小 */
+    padding: 12px 25px; /* 调整大屏幕上的按钮内边距 */
+  }
+
+  .spotify-button.logout {
+    font-size: 14px; /* 调整大屏幕上的登出按钮字体大小 */
+    padding: 10px 22px; /* 调整大屏幕上的登出按钮内边距 */
+  }
+
+  .controls button {
+    width: 70px; /* 在大屏幕上稍微增加按钮大小 */
+    height: 70px;
+    font-size: 28px; /* 在大屏幕上稍微增加字体大小 */
+  }
+
+  /* 为大屏幕调整动画 */
+  @keyframes playButtonClickLarge {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+
+  .controls button:nth-child(2):active {
+    animation: playButtonClickLarge 0.3s ease;
+  }
 }
